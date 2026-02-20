@@ -3,84 +3,203 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Yaswanth Patibandla | Software Developer</title>
+    <title>Yaswanth Patibandla | Software Developer Portfolio</title>
+    
     <script src="https://cdn.tailwindcss.com"></script>
+    
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&display=swap" rel="stylesheet">
+
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;600;700&display=swap');
-        body { font-family: 'Space Grotesk', sans-serif; scroll-behavior: smooth; }
-        .glass { background: rgba(255, 255, 255, 0.03); backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.1); }
-        .gradient-text { background: linear-gradient(90deg, #60a5fa, #a855f7); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-        .blob { position: absolute; width: 300px; height: 300px; background: rgba(96, 165, 250, 0.2); filter: blur(80px); border-radius: 50%; z-index: -1; }
+        * { 
+            font-family: 'Plus Jakarta Sans', sans-serif; 
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+        
+        html { scroll-behavior: smooth; }
+        
+        body { 
+            background-color: #050816; 
+            color: #ffffff; 
+            overflow-x: hidden;
+            -webkit-backface-visibility: hidden; /* Fix for WebKit flicker */
+        }
+        
+        /* WebKit Gradient Text Fix */
+        .gradient-text {
+            background: -webkit-linear-gradient(90deg, #3b82f6, #a855f7);
+            background: linear-gradient(90deg, #3b82f6, #a855f7);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            display: inline-block;
+        }
+
+        .glass-card {
+            background: rgba(255, 255, 255, 0.03);
+            -webkit-backdrop-filter: blur(12px);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .glass-card:hover {
+            border: 1px solid rgba(59, 130, 246, 0.5);
+            transform: translateY(-5px);
+            -webkit-transform: translateY(-5px);
+        }
+
+        /* WebKit AOS Safety: Prevents content from staying invisible if JS is slow */
+        @media screen and (-webkit-min-device-pixel-ratio:0) {
+            [data-aos] { 
+                opacity: 1 !important; 
+                transform: none !important; 
+                -webkit-transform: none !important;
+            }
+        }
+
+        .nav-link { position: relative; }
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0; height: 2px;
+            bottom: -4px; left: 0;
+            background-color: #3b82f6;
+            transition: width 0.3s ease;
+        }
+        .nav-link:hover::after { width: 100%; }
     </style>
 </head>
-<body class="bg-[#0f172a] text-slate-200 overflow-x-hidden">
+<body>
 
-    <div class="blob top-0 left-0"></div>
-    <div class="blob bottom-0 right-0" style="background: rgba(168, 85, 247, 0.15);"></div>
-
-    <nav class="fixed w-full z-50 py-6 px-10 flex justify-between items-center glass">
-        <h1 class="text-2xl font-bold gradient-text uppercase tracking-widest">YP</h1>
-        <div class="hidden md:flex gap-10 text-sm font-medium uppercase tracking-wider">
-            <a href="#home" class="hover:text-blue-400 transition">Home</a>
-            <a href="#about" class="hover:text-blue-400 transition">About</a>
-            <a href="#education" class="hover:text-blue-400 transition">Education</a>
-            <a href="#contact" class="hover:text-blue-400 transition">Contact</a>
+    <nav class="fixed w-full z-50 px-6 py-4 bg-[#050816]/80 -webkit-backdrop-blur-lg backdrop-blur-lg border-b border-white/5">
+        <div class="max-w-7xl mx-auto flex justify-between items-center">
+            <div class="text-2xl font-extrabold tracking-tighter">
+                <span class="text-blue-500 text-shadow">YASWANTH</span>.P
+            </div>
+            <div class="hidden md:flex space-x-8 text-sm font-semibold uppercase tracking-widest text-gray-400">
+                <a href="#home" class="nav-link hover:text-white transition">Home</a>
+                <a href="#about" class="nav-link hover:text-white transition">About</a>
+                <a href="#education" class="nav-link hover:text-white transition">Education</a>
+                <a href="#contact" class="nav-link hover:text-white transition">Contact</a>
+            </div>
         </div>
     </nav>
 
-    <section id="home" class="min-h-screen flex flex-col justify-center items-center text-center px-6">
-        <div data-aos="zoom-out" data-aos-duration="1200">
-            <h2 class="text-blue-400 font-mono mb-4 tracking-widest">HELLO, WORLD.</h2>
-            <h1 class="text-6xl md:text-8xl font-bold mb-6">I'm <span class="gradient-text">Yaswanth.</span></h1>
-            <p class="text-xl text-slate-400 max-w-2xl mx-auto leading-relaxed">
-                A passionate <span class="text-white">Software Developer</span> currently pursuing B.Tech CSE. 
-                Focusing on building robust solutions with C/C++ and mastering DSA.
+    <section id="home" class="min-h-screen flex items-center justify-center relative px-6">
+        <div class="absolute inset-0 z-0">
+            <div class="absolute top-20 left-10 w-72 h-72 bg-blue-600/20 rounded-full filter blur-[100px]"></div>
+            <div class="absolute bottom-20 right-10 w-72 h-72 bg-purple-600/10 rounded-full filter blur-[100px]"></div>
+        </div>
+
+        <div class="relative z-10 text-center" data-aos="fade-up" data-aos-duration="1200">
+            <h2 class="text-blue-400 font-mono tracking-[0.3em] mb-4 uppercase text-sm">Software Developer</h2>
+            <h1 class="text-5xl md:text-8xl font-extrabold mb-6 leading-tight">
+                Patibandla <br> <span class="gradient-text">Yaswanth</span>
+            </h1>
+            <p class="text-gray-400 text-lg md:text-xl max-w-2xl mx-auto mb-10 leading-relaxed">
+                B.Tech 1st Year CSE student at SRGEC. Passionate about <span class="text-white font-semibold">C/C++</span> and <span class="text-white font-semibold">Data Structures</span>.
             </p>
-            <div class="mt-10 flex gap-6 justify-center">
-                <a href="#contact" class="bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 rounded-xl font-bold transition-all transform hover:-translate-y-1 shadow-lg shadow-blue-500/20">Hire Me</a>
-                <a href="#education" class="glass px-8 py-4 rounded-xl font-bold hover:bg-white/5 transition-all">My Journey</a>
+            <div class="flex flex-wrap justify-center gap-5">
+                <a href="#contact" class="px-8 py-4 bg-blue-600 hover:bg-blue-700 rounded-2xl font-bold transition shadow-lg shadow-blue-600/20">Contact Me</a>
+                <a href="#education" class="px-8 py-4 glass-card rounded-2xl font-bold hover:bg-white/5 transition">Academic Details</a>
             </div>
         </div>
-    </section>
+    </section> 
 
     <section id="about" class="py-24 px-6 max-w-6xl mx-auto">
-        <div class="grid md:grid-cols-2 gap-16 items-center">
+        <div class="grid lg:grid-cols-2 gap-16 items-center">
             <div data-aos="fade-right">
-                <h3 class="text-3xl font-bold mb-6">Technical Arsenal</h3>
-                <p class="text-slate-400 mb-8 leading-relaxed">
-                    Based in Gudlavalleru, I specialize in low-level programming and algorithm design. I thrive on solving complex problems and am currently deep-diving into Data Structures to sharpen my engineering skills.
+                <h3 class="text-4xl font-bold mb-6">About Me</h3>
+                <p class="text-gray-400 text-lg leading-relaxed mb-8">
+                    I am currently pursuing my 1st Year B.Tech in CSE at <strong>Seshadri Rao Gudlavalleru College</strong>. I have a strong command over C and C++ and I am constantly learning DSA to improve my problem-solving efficiency.
                 </p>
                 <div class="grid grid-cols-2 gap-4">
-                    <div class="glass p-4 rounded-lg border-l-4 border-blue-500">
-                        <h4 class="font-bold">C / C++</h4>
-                        <p class="text-xs text-slate-500 mt-1">Primary Languages</p>
+                    <div class="p-5 glass-card rounded-2xl">
+                        <h4 class="text-blue-400 font-bold">Languages</h4>
+                        <p class="text-sm">C, C++</p>
                     </div>
-                    <div class="glass p-4 rounded-lg border-l-4 border-purple-500">
-                        <h4 class="font-bold">DSA</h4>
-                        <p class="text-xs text-slate-500 mt-1">Core Passion</p>
+                    <div class="p-5 glass-card rounded-2xl">
+                        <h4 class="text-purple-400 font-bold">Goals</h4>
+                        <p class="text-sm">Mastering DSA</p>
                     </div>
                 </div>
             </div>
-            <div class="glass p-8 rounded-3xl" data-aos="fade-left">
-                <h3 class="text-xl font-bold mb-6">Learning Path</h3>
-                <div class="space-y-6">
+            
+            <div class="space-y-6" data-aos="fade-left">
+                <h3 class="text-xl font-bold uppercase tracking-widest text-blue-500">Skill Proficiency</h3>
+                <div class="space-y-4">
                     <div>
-                        <div class="flex justify-between mb-2"><span>Logic Building</span><span>90%</span></div>
-                        <div class="w-full bg-slate-800 h-2 rounded-full"><div class="bg-blue-500 h-2 rounded-full" style="width: 90%"></div></div>
+                        <div class="flex justify-between mb-1 text-sm font-semibold"><span>C Language</span><span>95%</span></div>
+                        <div class="w-full bg-white/10 h-2 rounded-full"><div class="bg-blue-500 h-2 rounded-full" style="width: 95%"></div></div>
                     </div>
                     <div>
-                        <div class="flex justify-between mb-2"><span>C++ Development</span><span>85%</span></div>
-                        <div class="w-full bg-slate-800 h-2 rounded-full"><div class="bg-purple-500 h-2 rounded-full" style="width: 85%"></div></div>
+                        <div class="flex justify-between mb-1 text-sm font-semibold"><span>C++ Programming</span><span>88%</span></div>
+                        <div class="w-full bg-white/10 h-2 rounded-full"><div class="bg-purple-500 h-2 rounded-full" style="width: 88%"></div></div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="education" class="py-24 bg-black/20">
+    <section id="education" class="py-24 bg-white/[0.02]">
         <div class="max-w-4xl mx-auto px-6">
-            <h2 class="text-4xl font-bold mb-16 text-center" data-aos="fade-up">Academic Excellence</h2>
-            <div class="space-y-12">
-                <div class="relative
+            <h2 class="text-4xl font-bold mb-12 text-center" data-aos="fade-up">Education</h2>
+            
+            <div class="space-y-8">
+                <div class="glass-card p-8 rounded-3xl" data-aos="fade-up">
+                    <span class="text-blue-500 font-bold text-sm tracking-widest uppercase">Ongoing</span>
+                    <h3 class="text-2xl font-bold mt-2">B.Tech - CSE (1st Year)</h3>
+                    <p class="text-gray-400">Seshadri Rao Gudlavalleru Engineering College</p>
+                    <p class="mt-4 inline-block px-4 py-1 bg-blue-500/10 border border-blue-500/20 rounded text-blue-400 font-bold">8.79 CGPA</p>
+                </div>
+
+                <div class="glass-card p-8 rounded-3xl shadow-xl" data-aos="fade-up">
+                    <h3 class="text-2xl font-bold">Intermediate</h3>
+                    <p class="text-gray-400">Sri Saraswathi Junior College</p>
+                    <p class="mt-2 text-purple-400 font-bold text-xl">97.7%</p>
+                </div>
+
+                <div class="glass-card p-8 rounded-3xl" data-aos="fade-up">
+                    <h3 class="text-2xl font-bold">SSC</h3>
+                    <p class="text-gray-400">Montessori EM High School</p>
+                    <p class="mt-2 text-emerald-400 font-bold text-xl">92%</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="py-24 px-6 text-center">
+        <div data-aos="zoom-in">
+            <h2 class="text-4xl font-bold mb-10">Get In Touch</h2>
+            <div class="flex flex-col md:flex-row justify-center gap-6">
+                <a href="mailto:yaswanthpatibandla7@gmail.com" class="p-6 glass-card rounded-2xl flex items-center justify-center gap-4 hover:bg-blue-600/10">
+                    <i class="fas fa-envelope text-blue-500"></i>
+                    <span>yaswanthpatibandla7@gmail.com</span>
+                </a>
+                <a href="tel:+917013028629" class="p-6 glass-card rounded-2xl flex items-center justify-center gap-4 hover:bg-purple-600/10">
+                    <i class="fas fa-phone text-purple-500"></i>
+                    <span>+91 7013028629</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <footer class="py-10 text-center text-gray-600 border-t border-white/5">
+        <p>&copy; 2026 Patibandla Yaswanth</p>
+    </footer>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({
+            duration: 1000,
+            once: true,
+            easing: 'ease-out-back'
+        });
+    </script>
+</body>
+</html>
